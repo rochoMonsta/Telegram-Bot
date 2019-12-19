@@ -1,0 +1,95 @@
+﻿<Window x:Class="RochoBot2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RochoBot2"
+        mc:Ignorable="d"
+        Title="MeHelp" Height="450" Width="800">
+    <Grid Background="#3c1d4a">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="#1b0525"
+                Margin="5"
+                CornerRadius="5"
+                Padding="5"
+                BorderThickness="3"
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                >
+            <ListBox HorizontalAlignment="Stretch"
+                     Background="#201127"
+                     VerticalAlignment="Stretch"
+                     x:Name="usersList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="20" Foreground="White" Text="{Binding Nick}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        <Border BorderBrush="#1b0525"
+                Margin="5"
+                CornerRadius="5"
+                Padding="5"
+                BorderThickness="3"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="2">
+            <ListBox HorizontalAlignment="Stretch"
+                     Background="#703e87"
+                     VerticalAlignment="Stretch"
+                     x:Name="concreteUsersChat"
+                     Foreground="White"
+                     ItemsSource="{Binding ElementName=usersList, Path=SelectedItem.Messages}"
+                     FontSize="20">
+                <!--<ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#FF2B5278"
+                                Margin="5"
+                                CornerRadius="5"
+                                BorderThickness="1">
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>-->
+            </ListBox>
+        </Border>
+        <Border BorderBrush="#1b0525"
+                Margin="5"
+                CornerRadius="5"
+                Padding="5"
+                BorderThickness="3"
+                Grid.Row="3"
+                Grid.Column="2">
+            <StackPanel>
+                <TextBox Height="60"
+                         x:Name="txtBxSendMsg"
+                         Background="#201127"
+                         Foreground="White"
+                         FontSize="20"
+                         TextWrapping="Wrap"
+                         AutoWordSelection="True"
+                         Margin="5"
+                         VerticalContentAlignment="Bottom"/>
+                <Button Content="Send"
+                        Background="#dc8633"
+                        Foreground="White"
+                        Margin="5"
+                        x:Name="btnSendMsg"
+                        FontSize="20"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
